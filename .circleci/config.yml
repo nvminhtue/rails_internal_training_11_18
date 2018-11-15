@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          DATABASE_USER: root
+          DATABASE_PASSWORD: passwordformysql
+          HOST: 127.0.0.1
+          PORT: 3306
+          DATABASE_ADAPTER: mysql2
+          DATABASE_ENCODING: utf8
+          DATABASE_DEVELOP: training_develop
+          DATABASE_PRODUCT: training_product
+          DATABASE_TEST: training_test
+
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ROOT_PASSWORD: passwordformysql
+        command: mysqld --innodb-file-format=Barracuda --innodb_file_per_table=true --innodb-large-prefix=true --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --skip-character-set-client-handshake
+    working_directory: ~/rails_internal_training
+    steps:
+      - checkout
+      - run:
+          name: Install System Dependencies
+          command: sudo apt-get update -qq && sudo apt-get install -y qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - save_cache:
+          key: gem-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run:
+          name: Create DB
+          command: ./bin/rake db:create db:schema:load --trace
+      - run:
+          name: Run rubocop (new and modified files)
+          command: bundle exec rubocop --force-exclusion $( git diff --name-only --diff-filter=AM origin/master | paste -s - )
+      - run:
+          name: Run RSpec
+          command: bundle exec rspec
