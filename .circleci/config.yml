@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.5.1-node-browsers
         environment:
           DATABASE_USER: root
           DATABASE_PASSWORD: passwordformysql
@@ -37,7 +37,7 @@ jobs:
             - ./vendor/bundle
       - run:
           name: Create DB
-          command: ./bin/rake db:create db:schema:load --trace
+          command: ./bin/rails db:create db:schema:load --trace
       - run:
           name: Run rubocop (new and modified files)
           command: bundle exec rubocop --force-exclusion $( git diff --name-only --diff-filter=AM origin/master | paste -s - )
