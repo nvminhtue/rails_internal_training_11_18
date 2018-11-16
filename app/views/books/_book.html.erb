@@ -8,10 +8,10 @@
 
   <td>
     <div class="btn-group btn-group-sm">
-      <%= link_to "#", class: "btn btn-sm btn-warning", title: t(".edit") do %>
+      <%= link_to edit_book_path(book), class: "btn btn-sm btn-warning", title: t(".edit") do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
-      <%= link_to "#", class: "btn btn-sm btn-danger", title: t(".delete") do %>
+      <%= link_to book_path(book), method: :delete, data: {confirm: "Are you sure?", remote: true}, class: "btn btn-sm btn-danger delete_book", title: t(".delete") do %>
         <i class="fas fa-trash"></i>
       <% end %>
     </div>

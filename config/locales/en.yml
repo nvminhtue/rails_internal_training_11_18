@@ -42,6 +42,10 @@ en:
   books:
     success: "Successful saved"
     danger: "Failed"
+    delete_success: "Successful deleted"
+    delete_warning: "Something's wrong, this book can not be deleted now"
+    update_success: "Successful updated"
+    update_warning: "Something's wrong, this book can not be updated now"
     index:
       manage_books: "Manage Books"
       add_book: "Add New Book"
@@ -56,12 +60,16 @@ en:
       delete: "delete"
       search: "Search"
     search_books:
+      search: "search"
       category: "Filter by category"
       author: "Filter by author"
       publisher: "Filter by publisher"
     new:
       button: "Create"
       create_book: "Create Book"
+    edit:
+      button: "Confirm"
+      edit_book: "Edit Book"
     form:
       select_category: "---Select Category---"
       select_author: "---Select Author---"

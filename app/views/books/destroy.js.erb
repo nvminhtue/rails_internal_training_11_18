@@ -1,0 +1,5 @@
+$('.delete_book').bind('ajax:success', function() {
+  $(this).closest('tr').fadeOut("slow", function() {
+  alert(I18n.t('books.delete_success'))
+});
+});

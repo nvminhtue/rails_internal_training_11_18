@@ -54,4 +54,3 @@ $( document ).on('turbolinks:load', function() {
     $('#choose-author select').attr('disabled', false);
   })
 });
-
