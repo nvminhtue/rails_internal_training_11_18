@@ -370,3 +370,13 @@ body.sidebar-toggled footer.sticky-footer {
 .w-5 {
   width: 5%;
 }
+
+@media screen and (max-width: 1430px) {
+  i.visible {
+    display: none;
+  }
+}
+
+label.error {
+  color: red;
+}
