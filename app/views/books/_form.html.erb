@@ -1,15 +1,12 @@
-<form>
+<%= form_for @book do |f| %>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label><%= t ".name" %></label>
-      <input type="text" class="form-control">
+      <%= f.text_field :name, class: "form-control"  %>
     </div>
     <div class="form-group col-md-3">
       <label><%= t ".category" %></label>
-      <select class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
+      <%= f.collection_select :category_id, @categories, :id, :name, {include_blank: t(".select_category")}, {class: "form-control"} %>
     </div>
     <div class="form-group col-md-3">
       <div id="choose-author">
@@ -17,38 +14,33 @@
           <%= t ".author" %>
           <a href="javascript:;" class="ml-2 new-author" title="new author"><i class="fas fa-plus"></i></a>
         </label>
-        <select class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
+
+        <%= f.collection_select :author_id, @authors, :id, :name, {prompt: t(".select_author")}, {class: "form-control"} %>
       </div>
       <div id="new-author" class="d-none">
         <label>
           <%= t ".author" %>
           <a href="javascript:;" class="ml-2 choose-author" title="choose author"><i class="fas fa-times"></i></a>
         </label>
-        <input type="text" class="form-control" disabled>
+        <%=f.fields_for :author_attributes do |ff|  %>
+        <%= ff.text_field :name, class: "form-control" %>
+        <% end %>
       </div>
 
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label><%= t ".num_of_page" %></label>
-      <input type="text" class="form-control">
+      <label><%= t ".number_of_page" %></label>
+      <%= f.text_field :number_of_pages, class: "form-control" %>
     </div>
     <div class="form-group col-md-4">
       <label><%= t ".quantity" %></label>
-      <input type="text" class="form-control">
+      <%= f.text_field :quantity, class: "form-control" %>
     </div>
     <div class="col-md-4 mb-3">
       <label><%= t ".price" %></label>
-      <div class="input-group">
-        <input type="text" class="form-control">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><%= t ".unit" %></span>
-        </div>
-      </div>
+      <%= f.text_field :price, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
@@ -56,4 +48,4 @@
     <textarea class="form-control" rows="8"></textarea>
   </div>
   <button type="submit" class="btn btn-primary"><%= t ".create" %></button>
-</form>
+<% end %>

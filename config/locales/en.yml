@@ -1,11 +1,45 @@
 en:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
   base_title: "Rails Trainning"
   admin_management: "Admin Management"
   rails_trainning: "Rails Trainning"
   dash_board: "Dashboard"
+  all_books: "All books"
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            name:
+              required: 'Enter the name of book'
+              minlength: 'The name is too short'
+              maxlength: 'The name is too long'
+            category_id:
+              required: 'Please choose the category'
+            author_id:
+              required: 'Please choose the author'
+            author_name:
+              required: 'Enter the name of author'
+            pages:
+              required: 'Enter the number of pages'
+              number: "It's must be a number"
+              min: 'Please enter a positive number'
+            quantity:
+              required: 'Enter the quantity'
+              number: "It's must be a number"
+              min: 'Please enter a positive number'
+            price:
+              required: 'Enter the price of book'
+              number: "It's must be a number"
+              min: 'Please enter a positive number'
   books:
     index:
       manage_books: "Manage Books"
+      add_book: "Add New Book"
       index: "No."
       book_name: "Book Name"
       category: "Category"
@@ -23,11 +57,13 @@ en:
     new:
       create_book: "Create Book"
     form:
+      select_category: "---Select Category---"
+      select_author: "---Select Author---"
       create: "Create"
       name: "Name"
       category: "Category"
       author: "Author"
-      num_of_page: "Num of page"
+      number_of_page: "Number of page"
       quantity: "Quantity"
       price: "Price"
       unit: "$"

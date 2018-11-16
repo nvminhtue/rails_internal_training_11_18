@@ -1,17 +1,17 @@
-<%= form_for books_path, method: :get, html: {class: "row mb-4"} do |f| %>
-  <div class="col-md-2 offset-md-3">
+<%= form_for books_path, method: :get, html: {class: "row mb-4 fr"} do |f| %>
+  <div class="col-md-2 offset-md-3 my">
     <div class="input-group">
       <%= select_tag "category", options_from_collection_for_select(@categories, "id", "name"),
         include_blank: t(".category"), class: "form-control" %>
     </div>
   </div>
-  <div class="col-md-2 pl-0">
+  <div class="col-md-2 pl-0 my" >
     <div class="input-group">
       <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"),
         include_blank: t(".author"), class: "form-control" %>
     </div>
   </div>
-  <div class="col-md-2 pl-0">
+  <div class="col-md-2 pl-0 my">
     <div class="input-group">
       <%= select_tag "publisher", options_from_collection_for_select(@publishers, "id", "name"),
         include_blank: t(".publisher"), class: "form-control" %>
@@ -23,9 +23,10 @@
     </div>
   </div>
   <div class="col-md-1 pl-0">
-    <div class="btn-group btn-group-xs">
-      <%= button_tag type: "submit", class: "btn btn-xs btn-info w-100" do %>
+    <div id="search" class="btn-group btn-group-xs float-right">
+      <%= button_tag type: "submit", class: "btn btn-xs btn-info w-100 clicksearch" do %>
         <i class="fas fa-search"></i>
+        <i class = "visible">search</i>
       <% end %>
     </div>
   </div>
