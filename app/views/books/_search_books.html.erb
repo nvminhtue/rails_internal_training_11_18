@@ -1,0 +1,32 @@
+<%= form_for books_path, method: :get, html: {class: "row mb-4"} do |f| %>
+  <div class="col-md-2 offset-md-3">
+    <div class="input-group">
+      <%= select_tag "category", options_from_collection_for_select(@categories, "id", "name"),
+        include_blank: t(".category"), class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-md-2 pl-0">
+    <div class="input-group">
+      <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"),
+        include_blank: t(".author"), class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-md-2 pl-0">
+    <div class="input-group">
+      <%= select_tag "publisher", options_from_collection_for_select(@publishers, "id", "name"),
+        include_blank: t(".publisher"), class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-md-2 pl-0">
+    <div class="input-group">
+      <%= text_field_tag "book_name", "", class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-md-1 pl-0">
+    <div class="btn-group btn-group-xs">
+      <%= button_tag type: "submit", class: "btn btn-xs btn-info w-100" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
