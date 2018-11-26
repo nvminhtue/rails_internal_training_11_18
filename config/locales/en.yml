@@ -1,11 +1,50 @@
 en:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
   base_title: "Rails Trainning"
   admin_management: "Admin Management"
   rails_trainning: "Rails Trainning"
   dash_board: "Dashboard"
+  all_books: "All books"
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            name:
+              blank: 'Enter the name of book'
+              too_short: 'The name is too short'
+              too_long: 'The name is too long'
+            category_id:
+              blank: 'Please choose the category'
+            publisher_id:
+              blank: 'Please choose the publisher'
+            author_id:
+              blank: 'Please choose the author'
+            author_name:
+              blank: 'Enter the name of author'
+              too_short: 'The name is too short'
+            pages:
+              blank: 'Enter the number of pages'
+              not_a_number: "It's must be a number"
+              greater_than: 'Please enter a positive number'
+            quantity:
+              blank: 'Enter the quantity'
+              not_a_number: "It's must be a number"
+              greater_than: 'Please enter a positive number'
+            price:
+              blank: 'Enter the price of book'
+              not_a_number: "It's must be a number"
+              greater_than: 'Please enter a positive number'
   books:
+    success: "Successful saved"
+    danger: "Failed"
     index:
       manage_books: "Manage Books"
+      add_book: "Add New Book"
       index: "No."
       book_name: "Book Name"
       category: "Category"
@@ -21,14 +60,27 @@ en:
       author: "Filter by author"
       publisher: "Filter by publisher"
     new:
+      button: "Create"
       create_book: "Create Book"
     form:
+      select_category: "---Select Category---"
+      select_author: "---Select Author---"
+      select_publisher: "---Select Publisher---"
+      search: "search"
       create: "Create"
       name: "Name"
       category: "Category"
+      publisher: "Publisher"
       author: "Author"
-      num_of_page: "Num of page"
+      number_of_page: "Number of page"
       quantity: "Quantity"
       price: "Price"
       unit: "$"
       description: "Description"
+  views:
+    pagination:
+      first: "« FIRST"
+      last: "LAST »"
+      previous: "‹ PREV"
+      next: "NEXT ›"
+      truncate: "…"

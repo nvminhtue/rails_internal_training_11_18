@@ -10,7 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require jquery/dist/jquery.min.js
+//= require jquery-validation/dist/jquery.validate.min.js
+//= require jquery-validation/dist/additional-methods.min.js
 //= require rails-ujs
 //= require bootstrap/dist/js/bootstrap.bundle.min.js
 //= require activestorage

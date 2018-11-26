@@ -1,0 +1,13 @@
+<div class="page_header">
+  </div>
+  <div class="row product-detail fix">
+    <div class="col-sm-5 pd-right">
+      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i>
+        <%= @book.name %>
+      </h4>
+
+      <div><i class="fa fa-money" aria-hidden="true"></i>
+        <%= number_to_currency(@book.price) %>
+      </div>
+    </div>
+  </div>

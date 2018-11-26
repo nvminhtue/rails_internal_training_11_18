@@ -30,14 +30,16 @@ Category.create!(name: "Truyen Nhat",parent_id: 3)
 Category.create!(name: "Truyen Viet Nam",parent_id: 3)
 Category.create!(name: "Tu Dien")
 
-10.times do
+10.times do |i|
   rand = Random.rand(8)
   Book.create!(name: Faker::Name.unique.name,
     description: Faker::Lorem.sentence(4),
-    quantity: 4,
+    quantity: rand(10),
     price: 60,
     number_of_pages: 100,
     publisher_id: 1,
+    author_id: rand(1..5),
+    category_id: rand(1..4)
   )
 end
 

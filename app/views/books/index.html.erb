@@ -2,6 +2,10 @@
   <div class="card-header">
     <i class="fas fa-book"></i>
     <%= t ".manage_books" %>
+    <%= link_to new_book_path, class: "float-right" do %>
+      <i class="fas fa-plus-circle"></i>
+      <%= t ".add_book" %>
+    <% end %>
   </div>
   <div class="card-body">
     <%= render "search_books" %>
@@ -19,26 +23,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>Edinburgh</td>
-            <td>Edinburgh</td>
-            <td>2011/04/25</td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                <%= link_to "#", class: "btn btn-sm btn-warning", title: t(".edit") do %>
-                  <i class="fas fa-pencil-alt"></i>
-                <% end %>
-                <%= link_to "#", class: "btn btn-sm btn-danger", title: t(".delete") do %>
-                  <i class="fas fa-trash"></i>
-                <% end %>
-              </div>
-            </td>
-          </tr>
+          <%= render @books %>
         </tbody>
       </table>
+      </div>
+        <%= paginate @books, theme: 'twitter-bootstrap-3' %>
+      </div>
     </div>
   </div>
 </div>
