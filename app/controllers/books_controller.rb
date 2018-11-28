@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   before_action :load_book, only: %i(destroy edit update)
 
   def index
-    @books = @books.page(params[:page]).per(Settings.paginations.per_page)
+    # @books = @books.page(params[:page]).per(Settings.paginations.per_page)
+    @pagy, @books = pagy(Book.all, items: Settings.paginations.per_page)
   end
 
   def show
@@ -80,6 +81,7 @@ class BooksController < ApplicationController
     @books = Book.search_cate(category)
                  .search_author(author).search_publisher(publisher).search_name(book_name)
                  .includes(:author, :publisher, :category)
+    # @books = @books.search_cate(category).search_author(author).search_publisher(publisher).search_name(book_name)
   end
 
   def load_book
